@@ -16,6 +16,7 @@
             height: 50px;
             margin-bottom: 20px;
             background-color: #eee;
+            display: none;
 
         }
     </style>
@@ -29,8 +30,36 @@
         $(function (){
 
             $("#h5").fullpage({
-                'sectionsColor':['#254875','#00ff00','#ffaa00','#695684']
+                'sectionsColor':['#254875','#00ff00','#ffaa00','#695684'],
+                onLeave:function(index,nextIndex,direction){
+                    $('#h5').find('.page').eq(index - 1).trigger('onLeave');
+                },
+                afterLoad:function(anchorLink,index){
+                    $('#h5').find('.page').eq(index - 1).trigger('onLoad');
+                }
             });
+
+            $('.page').on('onLeave',function(){
+                console.log($(this).attr('id'),'--->','onLeave');
+                $(this).find('.component').trigger('onLeave');
+            });
+            $('.page').on('onLoad',function(){
+                console.log($(this).attr('id'),'--->','onLoad');
+                $(this).find('.component').trigger('onLoad');
+            });
+
+            $('.component').on('onLoad',function(){
+                $(this).fadeIn();
+                return false;
+            });
+            $('.component').on('onLeave',function(){
+                $(this).fadeOut();
+                return false;
+            });
+
+
+
+
 
 
         });
@@ -51,6 +80,7 @@
     <div class="page section" id="page-3">
         <div class="component bar">导航</div>
     </div>
+
 </div>
 
 </body>

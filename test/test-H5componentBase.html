@@ -13,24 +13,47 @@
             background: #000;
             font-size: 12px;
         }
-        .iphone{width: 340px;height: 540px;background: #fff;position: absolute;left: 50%;top: 50%;margin-left: -170px;margin-top: -270px;}
+
 
     </style>
-
+    <script src="../js/lib/jquery.js"></script>
     <script src="../js/H5ComponentBase.js"></script>
     <link rel="stylesheet" href="../css/H5ComponentBase.css"/>
-
-
-
 <body>
 <!-- 用于开发测试 H5componentBase -->
 
-<div class="iphone">
+    <div class="iphone">
 
 
 
 
-</div>
+    </div>
+
+<script>
+    var cfg = {
+        type : 'base',
+        text : '',
+        width : 516,
+        height : 306,
+        bg : '../imgs/p1_people.png',
+        css : {
+            opacity:0
+        },
+        center : true,
+        animateIn:{bottom:80,opacity:1},
+        animateOut:{bottom:0,opacity:0}
+    };
+
+    var h5 = new H5componentBase('myName',cfg);
+    $('.iphone').append(h5);
+
+    var load = true;
+    $('body').click(function(){
+        load = !load;
+        $('.h5_component').trigger(load ? 'onLeave' : 'onLoad');
+    })
+
+</script>
 </body>
 
 </html>
