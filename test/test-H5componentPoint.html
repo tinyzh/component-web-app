@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+    <title>componentBase 测试页面</title>
+
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-size: 12px;
+        }
+
+
+    </style>
+    <script src="../js/lib/jquery.js"></script>
+    <script src="../js/H5ComponentBase.js"></script>
+    <link rel="stylesheet" href="../css/H5ComponentBase.css"/>
+
+    <script src="../js/H5ComponentPoint.js"></script>
+    <link rel="stylesheet" href="../css/H5ComponentPoint.css"/>
+<body>
+<!-- 用于开发测试 H5componentBase -->
+
+    <div class="iphone">
+
+
+
+
+    </div>
+
+<script>
+    var cfg = {
+        type : 'point',
+        width : 300,
+        height : 300,
+        data:[
+                ['A项',.4,'green'],
+                ['B项',.2,'yellow',0,'-60%'],
+                ['C项',.2,'red',0,'120%'],
+        ],
+        css : {
+            opacity:0,
+            bottom:0
+        },
+        center : true,
+        animateIn:{bottom:'40%',opacity:1},
+        animateOut:{bottom:0,opacity:0}
+    };
+
+    var h5 = new H5ComponentPoint('myName',cfg);
+    $('.iphone').append(h5);
+
+    var load = true;
+    $('body').click(function(){
+        load = !load;
+        $('.h5_component').trigger(load ? 'onLeave' : 'onLoad');
+    })
+
+</script>
+</body>
+
+</html>

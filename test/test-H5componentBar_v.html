@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+    <title>componentBar 垂直柱图</title>
+
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-size: 12px;
+        }
+
+
+    </style>
+    <script src="../js/lib/jquery.js"></script>
+    <script src="../js/H5ComponentBase.js"></script>
+    <link rel="stylesheet" href="../css/H5ComponentBase.css"/>
+
+    <script src="../js/H5ComponentBar_v.js"></script>
+    <link rel="stylesheet" href="../css/H5ComponentBar_v.css"/>
+<body>
+<!-- 用于开发测试 H5componentBar对象  柱图 -->
+
+    <div class="iphone">
+
+
+
+
+    </div>
+
+<script>
+    var cfg = {
+        type : 'bar',
+        width : 530,
+        height : 600,
+        data:[
+                ['PHP',.4,'#ff7676'],
+                ['Canvas',.2],
+                ['Ruby',.1],
+                ['Python',.2],
+                ['Vue',.1]
+        ],
+        css : {
+            top:'100px',
+            opacity:0
+        },
+        center : true,
+        animateIn:{
+            opacity:1,
+            top:200
+        },
+        animateOut:{
+            opacity:0,
+            top:100
+        }
+    };
+
+    var h5 = new H5ComponentBar_v('myBarComponent_v',cfg);
+    $('.iphone').append(h5);
+
+    var load = true;
+    $('body').click(function(){
+        load = !load;
+        $('.h5_component').trigger(load ? 'onLeave' : 'onLoad');
+    })
+
+</script>
+</body>
+
+</html>
