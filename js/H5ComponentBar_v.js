@@ -8,18 +8,22 @@ var H5ComponentBar_v = function(name,cfg){
        var rate = $('<div class="rate">');
        var per = $('<div class="per">');
 
-        var width = item[1]*100 + '%';
+        var height = item[1]*100 + '%';
         var bgStyle = '';
         if(item[2]){
             bgStyle = 'style="background-color:'+item[2]+'"';
         }
 
-        rate.html('<div class="bg" '+bgStyle+'></div>');
+        rate.html('<div class="bg"></div>');
 
-        rate.css('width',width);
+        rate.css({
+            'height':height,
+            'backgroundColor':item[2]
+        });
         name.text(item[0]);
-        per.text(width);
-        line.append(name).append(rate).append(per);
+        per.text(height);
+        rate.append(per).append(name);
+        line.append(rate);
 
         component.append(line);
 
