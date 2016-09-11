@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+    <title>componentBar 测试页面</title>
+
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-size: 12px;
+        }
+
+
+    </style>
+    <script src="../js/lib/jquery.js"></script>
+    <script src="../js/H5ComponentBase.js"></script>
+    <link rel="stylesheet" href="../css/H5ComponentBase.css"/>
+
+    <script src="../js/H5ComponentPolyline.js"></script>
+    <link rel="stylesheet" href="../css/H5ComponentPolyline.css"/>
+<body>
+<!-- 用于开发测试 H5componentBar对象  柱图 -->
+
+    <div class="iphone">
+
+
+
+
+    </div>
+
+<script>
+    var cfg = {
+        type : 'polyline',
+        width : 530,
+        height : 600,
+        data:[
+                ['JS',.4,'#ff7676'],
+                ['HTML',.2],
+                ['CSS3',.1],
+                ['jQuery',.2],
+                ['Bootstrap',.1]
+        ],
+        css : {
+            top:'50px',
+            opacity:0
+        },
+        center : true,
+        animateIn:{
+            opacity:1,
+            top:100
+        },
+        animateOut:{
+            opacity:0,
+            top:50
+        }
+    };
+
+    var h5 = new H5ComponentPolyline('polyline',cfg);
+    $('.iphone').append(h5);
+
+    var load = true;
+    $('body').click(function(){
+        load = !load;
+        $('.h5_component').trigger(load ? 'onLeave' : 'onLoad');
+    })
+
+</script>
+</body>
+
+</html>
